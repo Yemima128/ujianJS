@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Ujian DPK</title>
+	</head>
+	<body>
+		<script>
+			let jumlahPembeli = parseInt(prompt("Masukkan jumlah pembeli"));
+
+			let hargaBuku = 5000;
+			let totalPendapatan = 0;
+			let diskonKecil = 0;
+			let diskonBesar = 0;
+
+			for (let i = 1; i <= jumlahPembeli; i++) {
+			console.log("=== Pembeli ke-" + i + " ===");
+
+    
+				let jumlahBuku = parseInt(prompt("Masukkan jumlah buku pembeli ke-" + i));
+
+				let totalHarga = jumlahBuku * hargaBuku;
+				let jumlahDiskon = 0;
+				let jenisDiskon = "";
+
+				if (jumlahBuku <= 100) {
+					jumlahDiskon = 0;
+					jenisDiskon = "Tidak mendapatkan diskon";
+				} 
+				else if (jumlahBuku <= 200) {
+					let diskon1 = 100 * hargaBuku * 0.05;
+					let diskon2 = (jumlahBuku - 100) * hargaBuku * 0.15;
+					jumlahDiskon = diskon1 + diskon2;
+
+					jenisDiskon = "Diskon kecil";
+					diskonKecil++;
+				} 
+				else {
+					let diskon1 = 100 * hargaBuku * 0.07;
+					let diskon2 = 100 * hargaBuku * 0.15;
+					let diskon3 = (jumlahBuku - 200) * hargaBuku * 0.27;
+					jumlahDiskon = diskon1 + diskon2 + diskon3;
+
+					jenisDiskon = "Diskon besar";
+					diskonBesar++;
+				}
+
+				let hargaSetelahDiskon = totalHarga - jumlahDiskon;
+				totalPendapatan += hargaSetelahDiskon;
+
+    
+				console.log("Jumlah buku        : " + jumlahBuku);
+				console.log("Total harga        : " + totalHarga);
+				console.log("Diskon             : " + jumlahDiskon);
+				console.log("Total bayar        : " + hargaSetelahDiskon);
+				console.log("Jenis diskon       : " + jenisDiskon);
+		}
+
+
+	let rataRata = totalPendapatan / jumlahPembeli;
+
+	console.log("=== HASIL AKHIR ===");
+	console.log("Total pendapatan   : " + totalPendapatan);
+	console.log("Rata-rata          : " + rataRata);
+	console.log("Diskon kecil       : " + diskonKecil);
+	console.log("Diskon besar       : " + diskonBesar);
+		</script>
+	</body>
+</html>
